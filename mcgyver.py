@@ -15,7 +15,24 @@ class mcgyver:
     def move(self, direction):
         if direction =='right':
             if self.case_x < (number_sprite_side - 1):
-                if self.level.structure [self.case_y][self.case_x + 1] != "w"
+                if self.level.structure [self.case_y][self.case_x + 1] != "w":
                     self.case_x += 1
                     self.x = self.case_x * size_sprite
 
+        if direction == 'left':
+            if self.case_x > 0:
+                if self.level.structure [self.case_y] [self.case_x - 1] !='w':
+                    self.case_x -= 1
+                    self.x = self.case_x * size_sprite
+
+        if direction == 'up':
+            if self.case_y > 0
+                if self.level.structure [self.case_x] [self.case_y - 1] !='w':
+                    self.case_y -= 1
+                    self.y = self.case_y *size_sprite
+
+        if direction == 'down':
+            if self.case_y < (number_sprite_side - 1):
+                if self.level.structure [self.case_x] [self.case_y + 1] != 'w':
+                    self.case_y += 1
+                    self.y = self.case_y * size_sprite
