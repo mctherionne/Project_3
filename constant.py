@@ -5,10 +5,10 @@ side_window = size_sprite * number_sprite_side
 
 # Customizing window
 window_title = "Run Mcgyver"
-Image_icon = "D:\Project_3\image/macgyver.png"
+image_icon = "D:\Project_3\image/macgyver.png"
+image_home = "D:\Project_3\image/home.jpg"
 
 # Lists of the game's images
-image_home = "D:\Project_3\image/home.jpg"
 image_background = "D:\Project_3\image/bacground.png"
 image_wall = "D:\Project_3\image/wall.png"
 image_loot = "D:\Project_3\image/loot.png"

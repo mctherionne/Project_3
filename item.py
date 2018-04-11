@@ -1,1 +1,2 @@
-class Item
+class Item:
+    pass
