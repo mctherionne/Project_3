@@ -4,7 +4,7 @@ from constant import *
 from labyrinth import *
 class mcgyver:
     def __init__(self, moove, level):
-        self.move = pygame.image.load(image_mcgyver).convert_alpha()
+        self.move = pygame.image.load(image_macgyver).convert_alpha()
         self.case_x = 0
         self.case_y = 0
         self.x = 0
