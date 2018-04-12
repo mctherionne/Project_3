@@ -1,2 +1,2 @@
 class Item:
-    pass
+    def __init__(self, location, random):

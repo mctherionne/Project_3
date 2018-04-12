@@ -1,8 +1,9 @@
 import pygame
-from pygame.locals import *
+
 from constant import *
 
-class Labyrinth :
+
+class Labyrinth:
     def __init__(self, file):
         self.file = file
         self.structure = 0
@@ -27,12 +28,10 @@ class Labyrinth :
             x = num_case * size_sprite
             y = num_line * size_sprite
             if sprite == 'm':
-                window.blit(wall,(x, y))
-            elif sprite =='d':
-                window.blit (start, (x, y))
-            elif sprite =='a':
-                window.blit (end_of_level, (x, y))
+                window.blit(wall, (x, y))
+            elif sprite == 'd':
+                window.blit(start, (x, y))
+            elif sprite == 'a':
+                window.blit(end_of_level, (x, y))
             num_case += 1
         num_line += 1
-
-

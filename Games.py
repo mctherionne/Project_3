@@ -2,6 +2,7 @@
 # -*- coding: Utf-8 -*
 
 from labyrinth import *
+from mcgyver import Mcgyver
 
 pygame.init()
 
@@ -11,16 +12,19 @@ pygame.display.set_icon(icon)
 pygame.display.set_caption(window_title)
 
 continuer = 1
+
 while continuer:
     home = pygame.image.load(image_home).convert()
     window.blit(home, (0, 0))
 
     pygame.display.flip()
+
     continuer_home = 1
     continuer_game = 1
 
     while continuer_home:
-        pygame.time.clock().tick(30)
+
+        pygame.time.Clock().tick(30)
 
         for event in pygame.event.get():
             if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
@@ -39,7 +43,33 @@ while continuer:
 
         level = level(choice)
         level.generate()
-        level.display
+        level.display(window)
+
+        mcg = Mcgyver("D:\Project_3\image/macgyver.png", level)
 
     while continuer_game:
-        pygame.time.clock().tick(30)
+        pygame.time.Clock().tick(30)
+
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                continuer_game = 0
+                continuer = 0
+            elif event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    continuer_game = 0
+
+                elif event.key == K_RIGHT:
+                    mcg.deplacer('right')
+                elif event.key == K_LEFT:
+                    mcg.deplacer('left')
+                elif event.key == K_UP:
+                    mcg.deplacer('up')
+                elif event.key == K_DOWN:
+                    mcg.deplacer('down')
+
+        window.blit(background, (0, 0))
+        level.display(window)
+        pygame.display.flip()
+
+        if level.structure[mcg.case_y][mcg.case_x] == 'a':
+            continuer_game = 0
