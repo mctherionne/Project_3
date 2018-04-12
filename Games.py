@@ -5,7 +5,7 @@ from labyrinth import *
 
 pygame.init()
 
-window = pygame.display.set_mode((window_rating, window_rating))
+window = pygame.display.set_mode((800, 600))
 icon = pygame.image.load(image_icon)
 pygame.display.set_icon(icon)
 pygame.display.set_caption(window_title)
@@ -35,10 +35,11 @@ while continuer:
                     choice = 'n1'
 
     if choice != 0:
-        background = pygame.image.load (image_background).convert()
+        background = pygame.image.load(image_background).convert()
 
         level = level(choice)
         level.generate()
         level.display
 
-        mac = perso
+    while continuer_game:
+        pygame.time.clock().tick(30)
