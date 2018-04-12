@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 # -*- coding: Utf-8 -*
-
+import pygame
+from pygame.locals import *
 from labyrinth import *
 from mcgyver import Mcgyver
-
+from constant import *
+from labyrinth import *
 pygame.init()
 
 window = pygame.display.set_mode((800, 600))
@@ -34,14 +36,14 @@ while continuer:
                 choice = 0
 
             elif event.type == KEYDOWN:
-                if event.key == K_F1:
+                if event.key == K_1:
                     continuer_home = 0
                     choice = 'n1'
 
     if choice != 0:
         background = pygame.image.load(image_background).convert()
 
-        level = level(choice)
+        level = Labyrinth(choice)
         level.generate()
         level.display(window)
 

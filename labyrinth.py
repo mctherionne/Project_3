@@ -24,14 +24,16 @@ class Labyrinth:
         end_of_level = pygame.image.load(image_guard).convert()
 
         num_line = 0
-        for sprite in line:
-            x = num_case * size_sprite
-            y = num_line * size_sprite
-            if sprite == 'm':
-                window.blit(wall, (x, y))
-            elif sprite == 'd':
-                window.blit(start, (x, y))
-            elif sprite == 'a':
-                window.blit(end_of_level, (x, y))
-            num_case += 1
-        num_line += 1
+        for line in self.structure:
+            num_case = 0
+            for sprite in line:
+                x = num_case * size_sprite
+                y = num_line * size_sprite
+                if sprite == 'm':
+                    window.blit(wall, (x, y))
+                elif sprite == 'd':
+                    window.blit(start, (x, y))
+                elif sprite == 'a':
+                    window.blit(end_of_level, (x, y))
+                num_case += 1
+            num_line += 1
