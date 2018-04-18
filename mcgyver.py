@@ -1,12 +1,9 @@
-import pygame
-from pygame.locals import *
-from constant import *
 from labyrinth import *
 
 
 class Mcgyver:
-    def __init__(self, move, level):
-        self.move = pygame.image.load(image_macgyver).convert_alpha()
+    def __init__(self, image_macgyver, level):
+        self.direction = pygame.image.load(image_macgyver).convert_alpha()
         self.case_x = 0
         self.case_y = 0
         self.x = 0
@@ -39,4 +36,4 @@ class Mcgyver:
                     self.y = self.case_y * size_sprite
 
         if sprite != 'a':
-            pass
+

@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 # -*- coding: Utf-8 -*
-import pygame
+
 from pygame.locals import *
 from labyrinth import *
 from mcgyver import Mcgyver
-from constant import *
-from labyrinth import *
+
 pygame.init()
 
 window = pygame.display.set_mode((800, 600))
@@ -42,6 +41,9 @@ while continuer:
 
     if choice != 0:
         background = pygame.image.load(image_background).convert()
+        window.blit(background, (0, 0))
+
+        pygame.display.flip()
 
         level = Labyrinth(choice)
         level.generate()
@@ -61,16 +63,16 @@ while continuer:
                     continuer_game = 0
 
                 elif event.key == K_RIGHT:
-                    mcg.deplacer('right')
+                    mcg.move('right')
                 elif event.key == K_LEFT:
-                    mcg.deplacer('left')
+                    mcg.move('left')
                 elif event.key == K_UP:
-                    mcg.deplacer('up')
+                    mcg.move('up')
                 elif event.key == K_DOWN:
-                    mcg.deplacer('down')
+                    mcg.move('down')
 
-        window.blit(background, (0, 0))
         level.display(window)
+        window.blit(mcg.direction, (0, 0))
         pygame.display.flip()
 
         if level.structure[mcg.case_y][mcg.case_x] == 'a':

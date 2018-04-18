@@ -1,5 +1,5 @@
 import pygame
-from pygame.locals import *
+
 from constant import *
 
 
@@ -31,8 +31,6 @@ class Labyrinth:
                 y = num_line * size_sprite
                 if sprite == 'm':
                     window.blit(wall, (x, y))
-                elif sprite == 'd':
-                    window.blit(start, (x, y))
                 elif sprite == 'a':
                     window.blit(end_of_level, (x, y))
                 num_case += 1
