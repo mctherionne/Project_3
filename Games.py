@@ -4,16 +4,16 @@
 from pygame.locals import *
 from labyrinth import *
 from mcgyver import Mcgyver
+from constant import *
 
 pygame.init()
 
-window = pygame.display.set_mode((800, 600))
+window = pygame.display.set_mode((800,600))
 icon = pygame.image.load(image_icon)
 pygame.display.set_icon(icon)
 pygame.display.set_caption(window_title)
 
 continuer = 1
-
 while continuer:
     home = pygame.image.load(image_home).convert()
     window.blit(home, (0, 0))
@@ -41,23 +41,23 @@ while continuer:
 
     if choice != 0:
         background = pygame.image.load(image_background).convert()
-        window.blit(background, (0, 0))
-
-        pygame.display.flip()
 
         level = Labyrinth(choice)
         level.generate()
         level.display(window)
 
-        mcg = Mcgyver("D:\Project_3\image/macgyver.png", level)
+        mcg = Mcgyver(image_macgyver, level)
 
     while continuer_game:
+
         pygame.time.Clock().tick(30)
 
         for event in pygame.event.get():
+
             if event.type == QUIT:
                 continuer_game = 0
                 continuer = 0
+
             elif event.type == KEYDOWN:
                 if event.key == K_ESCAPE:
                     continuer_game = 0
@@ -71,6 +71,7 @@ while continuer:
                 elif event.key == K_DOWN:
                     mcg.move('down')
 
+        window.blit(background, (0, 0))
         level.display(window)
         window.blit(mcg.direction, (0, 0))
         pygame.display.flip()

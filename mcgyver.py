@@ -1,4 +1,7 @@
+from pygame import sprite
+from constant import *
 from labyrinth import *
+from item import *
 
 
 class Mcgyver:
@@ -36,4 +39,4 @@ class Mcgyver:
                     self.y = self.case_y * size_sprite
 
         if sprite != 'a':
-
+            pass

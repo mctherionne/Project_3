@@ -1,4 +1,7 @@
 import pygame
+from pygame.locals import *
+from labyrinth import *
+
 
 class Item:
-    def __init__(self, random):
+    pass
