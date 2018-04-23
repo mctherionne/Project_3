@@ -7,6 +7,7 @@ class Labyrinth:
     def __init__(self, file):
         self.file = file
         self.structure = 0
+        self.free_box = []
 
     def generate(self):
         with open(self.file, 'r') as file:
@@ -33,5 +34,8 @@ class Labyrinth:
                     window.blit(wall, (x, y))
                 elif sprite == 'a':
                     window.blit(end_of_level, (x, y))
+                elif sprite == '0':
+                    self.free_box.append((x, y))
                 num_case += 1
             num_line += 1
+
