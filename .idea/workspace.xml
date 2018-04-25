@@ -5,17 +5,8 @@
     <option name="CUSTOM_SCOPE_NAME" value="Module 'Project_3'" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c05b14c-9e14-4f1b-9802-6eb96acda3cf" name="Default" comment="modification of files Games">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+    <list default="true" id="4c05b14c-9e14-4f1b-9802-6eb96acda3cf" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Games.py" afterPath="$PROJECT_DIR$/Games.py" />
-      <change beforePath="$PROJECT_DIR$/constant.py" afterPath="$PROJECT_DIR$/constant.py" />
-      <change beforePath="$PROJECT_DIR$/image/guard.png" afterPath="$PROJECT_DIR$/image/guard.png" />
-      <change beforePath="$PROJECT_DIR$/image/macgyver.png" afterPath="$PROJECT_DIR$/image/macgyver.png" />
-      <change beforePath="$PROJECT_DIR$/item.py" afterPath="$PROJECT_DIR$/item.py" />
-      <change beforePath="$PROJECT_DIR$/labyrinth.py" afterPath="$PROJECT_DIR$/labyrinth.py" />
-      <change beforePath="$PROJECT_DIR$/mcgyver.py" afterPath="$PROJECT_DIR$/mcgyver.py" />
-      <change beforePath="$PROJECT_DIR$/n1" afterPath="$PROJECT_DIR$/n1" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -444,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1524505038070</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="modiffication background and progress of my item class">
+      <created>1524665716615</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1524665716616</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -502,7 +500,8 @@
     <MESSAGE value="fixed some bug" />
     <MESSAGE value="fexed many bug on games and mcgyver files" />
     <MESSAGE value="modification of files Games" />
-    <option name="LAST_COMMIT_MESSAGE" value="modification of files Games" />
+    <MESSAGE value="modiffication background and progress of my item class" />
+    <option name="LAST_COMMIT_MESSAGE" value="modiffication background and progress of my item class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
