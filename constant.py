@@ -9,8 +9,8 @@ image_icon = "D:\Project_3\image/macgyver.png"
 image_home = "D:\Project_3\image/home.jpg"
 
 # Lists of the game's images
-image_background = "D:\Project_3\image/background.png"
-image_wall = "D:\Project_3\image/wall.png"
-image_loot = "D:\Project_3\image/loot.png"
-image_macgyver = "D:\Project_3\image/macgyver.png"
-image_guard = "D:\Project_3\image/guard.png"
+image_background = ".\image/background.png"
+image_wall = ".\image/wall.png"
+image_loot = ".\image/loot.png"
+image_macgyver = ".\image/macgyver.png"
+image_guard = ".\image/guard.png"

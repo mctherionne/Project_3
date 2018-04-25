@@ -38,15 +38,20 @@ while continuer:
                 choice = 'n1'
 
     if choice != 0:
+        background = pygame.Surface(window.get_size())
         background = pygame.image.load(image_background).convert()
         window.blit(background, (0, 0))
+
         level = Labyrinth(choice)
         level.generate()
         level.display(window)
 
-        mcg = Mcgyver(image_macgyver, level)
-        continuer_game = 1
+        pygame.display.flip()
 
+        mcg = Mcgyver(level)
+        level.display(window)
+
+        continuer_game = 1
         while continuer_game:
 
             pygame.time.Clock().tick(30)
@@ -70,9 +75,10 @@ while continuer:
                     elif event.key == K_DOWN:
                         mcg.move('down')
 
+            window.blit(background, (0, 0))
             level.display(window)
-            window.blit(mcg.direction, (0, 0))
+            window.blit(mcg.direction, (mcg.x, mcg.y))
             pygame.display.flip()
 
-            if level.structure[mcg.case_y][mcg.case_x] == 'a':
-                continuer_game = 0
+        if level.structure[mcg.case_y][mcg.case_x] == 'a':
+            continuer_game = 0
