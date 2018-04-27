@@ -1,11 +1,14 @@
+from random import random
 import pygame
-from labyrinth import Labyrinth
 import constant
+from labyrinth import Labyrinth
+from mcgyver import Mcgyver
 
 
-class Item(Labyrinth):
+class Item(Labyrinth, Mcgyver):
 
-    def __init__(self, position_x, position_y):
+    def __init__(self, position_x, position_y, name):
+        self.name = name
         item = pygame.image.load(constant.image_loot).convert
         self.item = item
         self.position_x = position_x
@@ -13,14 +16,8 @@ class Item(Labyrinth):
         Labyrinth.__init__(self.free_box)
         self.position = position_x * position_y
 
+    def aleatory_position(self, position, name):
+        if name == "needle":
+            random(self.free_box)
 
-    def aleatory_position(self):
-        self.position = Labyrinth.self.free_box.random.choice()
-        print(Labyrinth.free_box)
-
-
-
-
-
-
-
+            print(random, self.position)

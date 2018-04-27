@@ -1,11 +1,11 @@
 from pygame import sprite
-from item import *
 from labyrinth import *
 
 
 class Mcgyver:
     def __init__(self, level):
         self.direction = pygame.image.load(image_macgyver).convert_alpha()
+        self.direction = pygame.transform.scale(self.direction, (30, 30))
         self.case_x = 0
         self.case_y = 0
         self.x = 0

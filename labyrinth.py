@@ -1,7 +1,6 @@
 import pygame
-import self as self
-
 from constant import *
+import item
 
 
 class Labyrinth:
@@ -25,8 +24,10 @@ class Labyrinth:
             self.structure = structure_level
 
     def display(self, window):
+        item = pygame.image.load(image_loot).convert()
         wall = pygame.image.load(image_wall).convert()
         end_of_level = pygame.image.load(image_guard).convert_alpha()
+        end_of_level = pygame.transform.scale(end_of_level, (30, 30))
         background = pygame.image.load(image_background).convert()
         num_line = 0
         for line in self.structure:
