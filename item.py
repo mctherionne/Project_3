@@ -1,11 +1,12 @@
-from random import random
+import random
+
 import pygame
+
 import constant
-from labyrinth import Labyrinth
-from mcgyver import Mcgyver
+import labyrinth
 
 
-class Item(Labyrinth, Mcgyver):
+class Item():
 
     def __init__(self, position_x, position_y, name):
         self.name = name
@@ -13,11 +14,10 @@ class Item(Labyrinth, Mcgyver):
         self.item = item
         self.position_x = position_x
         self.position_y = position_y
-        Labyrinth.__init__(self.free_box)
         self.position = position_x * position_y
+        position_r = random.random(labyrinth.free_box)
+        self.position_r = position_r
 
-    def aleatory_position(self, position, name):
-        if name == "needle":
-            random(self.free_box)
+    def needle(self, position):
+        pass
 
-            print(random, self.position)
