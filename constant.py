@@ -1,3 +1,8 @@
+#!/usr/bin/python3
+# -*- coding: Utf-8 -*
+
+"""Constants of the maze game macgyver"""
+
 # Window settings
 number_sprite_side = 15
 size_sprite = 30
@@ -5,8 +10,8 @@ side_window = size_sprite * number_sprite_side
 
 # Customizing window
 window_title = "Run Mcgyver"
-image_icon = "D:\Project_3\image/macgyver.png"
-image_home = "D:\Project_3\image/home.jpg"
+image_icon = ".\image/macgyver.png"
+image_home = ".\image/home.jpg"
 
 # Lists of the game's images
 image_background = ".\image/background.png"
