@@ -9,7 +9,7 @@ import pygame
 import constant
 
 
-class Item():
+class Item:
     """class to create Item"""
     def __init__(self, position_x, position_y, name):
         self.name = name
