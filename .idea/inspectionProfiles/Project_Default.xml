@@ -13,6 +13,7 @@
         <list>
           <option value="pygame.init" />
           <option value="pygame.image.load" />
+          <option value="item.position" />
         </list>
       </option>
     </inspection_tool>

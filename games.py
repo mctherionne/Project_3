@@ -14,6 +14,7 @@ from pygame.locals import *
 import constant
 import labyrinth
 import mcgyver
+import item
 
 labyrinth.pygame.init()
 # Opening the Pygame window (square: width = height)
@@ -72,6 +73,14 @@ while continuer:
         # Creation of macgyver
         mcg = mcgyver.Mcgyver(level)
         level.display(window)
+
+        # creation items
+        name_item = ("needle", "small plastic tube", "ether")
+        item.Item.name = name_item
+        for i in range(0, 3):
+            level.item_lab.append(item.Item(name_item[i], level.free_box))
+
+            print(level.item_lab[i].name, level.item_lab[i].position)
 
         # game loop
         continuer_game = 1

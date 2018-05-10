@@ -16,6 +16,7 @@ class Labyrinth:
         self.file = file
         self.structure = 0
         self.free_box = []
+        self.item_lab = []
         
     def generate(self):
         """Method to generate the level according to the file.
