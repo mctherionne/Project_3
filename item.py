@@ -8,6 +8,7 @@ import random
 import pygame
 import constant
 import labyrinth as lab
+import mcgyver as mcg
 
 
 class Item:
@@ -24,20 +25,14 @@ class Item:
         self.position.append(random.choice(self.free_box))
 
     def item_display(self, window):
+        """Method for display picture in my labyrinth"""
         # Loading image
-        item = pygame.image.load(constant.image_loot).convert
-        num_line = 0
+        loot = pygame.transform.scale(constant.image_loot, (30, 30))
+
         for line in lab.Labyrinth.self.structure:
-            num_case = 0
             for sprite in line:
-                x = num_case * constant.size_sprite
-                y = num_line * constant.size_sprite
+                x = lab.Labyrinth.item_lab * constant.size_sprite
+                y = lab.Labyrinth.item_lab * constant.size_sprite
                 if sprite == self.position:
-                    window.blit(item, (x, y))
-
-
-
-    def undisplay(self, window):
-        pass
-
-
+                    window.blit(loot, (x, y))
+            pygame.display.flip()

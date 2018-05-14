@@ -16,14 +16,14 @@ import labyrinth
 import mcgyver
 import item
 
-labyrinth.pygame.init()
+pygame.init()
 # Opening the Pygame window (square: width = height)
-window = labyrinth.pygame.display.set_mode((800, 600))
+window = pygame.display.set_mode((800, 600))
 # Icon
-icon = labyrinth.pygame.image.load(constant.image_icon)
-labyrinth.pygame.display.set_icon(icon)
+icon = pygame.image.load(constant.image_icon)
+pygame.display.set_icon(icon)
 # Title
-labyrinth.pygame.display.set_caption(constant.window_title)
+pygame.display.set_caption(constant.window_title)
 
 # Home loop
 continuer = 1
@@ -32,16 +32,16 @@ continuer_game = 0
 
 while continuer:
     # Loading and viewing the home screen
-    home = labyrinth.pygame.image.load(constant.image_home).convert()
+    home = pygame.image.load(constant.image_home).convert()
     window.blit(home, (0, 0))
 
     # Refresh
-    labyrinth.pygame.display.flip()
+    pygame.display.flip()
 
     # Speed limitation of the loop
-    labyrinth.pygame.time.Clock().tick(30)
+    pygame.time.Clock().tick(30)
 
-    for event in labyrinth.pygame.event.get():
+    for event in pygame.event.get():
 
         # If the user leaves, we put the loop variables
         # at 0 to not browse any and close
@@ -60,15 +60,15 @@ while continuer:
     # to not load if he leaves
     if choice != 0:
         # load background
-        background = labyrinth.pygame.Surface(window.get_size())
-        background = labyrinth.pygame.image.load(constant.image_background).convert()
+        background = pygame.Surface(window.get_size())
+        background = pygame.image.load(constant.image_background).convert()
         window.blit(background, (0, 0))
         # Generating a level from a file
         level = labyrinth.Labyrinth(choice)
         level.generate()
         level.display(window)
 
-        labyrinth.pygame.display.flip()
+        pygame.display.flip()
 
         # Creation of macgyver
         mcg = mcgyver.Mcgyver(level)
@@ -85,10 +85,16 @@ while continuer:
         # game loop
         continuer_game = 1
         while continuer_game:
+            # Background for write item, inventory
             background_2 = pygame.draw.rect(window, (0, 0, 0), (0, 0, 800, 600))
-            inventory = "vous avez obtenue"
+            inventory = "you got"
             font = pygame.font.SysFont("broadway", 36, bold=False, italic=False)
             text = font.render(inventory, 1, (255, 255, 255))
+            # when mcgyver go in case with a item
+            if mcg == level.item_lab:
+                font = pygame.font.SysFont("broadway", 36, bold=False, italic=False)
+                text = font.render(name_item, 1, (255, 255, 255))
+                window.blit(text, (450, 60))
             window.blit(text, (450, 0))
             labyrinth.pygame.time.Clock().tick(30)
 
