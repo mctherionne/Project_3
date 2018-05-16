@@ -22,7 +22,7 @@ class Item:
         self.position = []
         self.free_box = free_box
         self.item_location()
-        self.item_inventory()
+
 
     def item_location(self):
         """Method for placing an object randomly"""
@@ -42,9 +42,6 @@ class Item:
         unloot = pygame.image.load(constant.image_background).convert()
         unloot = pygame.transform.scale(unloot, (30, 30))
         window.blit(unloot, self.position[0])
-
-    def item_inventory(self, item):
-        self.item = []
 
 
 

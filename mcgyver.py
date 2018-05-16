@@ -66,3 +66,4 @@ class Mcgyver:
                     self.case_y += 1
                     self.y = self.case_y * constant.size_sprite
 
+    def add_item(self):
