@@ -97,18 +97,17 @@ while continuer:
 
             # when mcgyver go in case with a item
             if mcg.case == level.item_lab[0].position:
-                window.blit(background, (mcg.x, mcg.y))
+                window.blit(item.Item.item_undisplay(window), (mcg.x, mcg.y))
                 text_1 = font.render(level.item_lab[0].name, 1, (255, 255, 255))
                 window.blit(text_1, (450, 40))
                 pygame.display.flip()
-                item.Item.inventory(level.item_lab.name)
             elif mcg.case == level.item_lab[1].position:
-                window.blit(background, (mcg.x, mcg.y))
+                window.blit(item.Item.item_undisplay(window), (mcg.x, mcg.y))
                 text_2 = font.render(level.item_lab[1].name, 1, (255, 255, 255))
                 window.blit(text_2, (450, 90))
                 pygame.display.flip()
             elif mcg.case == level.item_lab[2].position:
-                window.blit(background, (mcg.case_x, mcg.case_y))
+                window.blit(item.Item.item_undisplay(window), (mcg.case_x, mcg.case_y))
                 text_3 = font.render(level.item_lab[2].name, 1, (255, 255, 255))
                 window.blit(text_3, (450, 150))
                 pygame.display.flip()

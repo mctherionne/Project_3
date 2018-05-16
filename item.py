@@ -5,8 +5,13 @@
 files for class to create items
 """
 import random
+
 import pygame
+
 import constant
+
+
+
 
 
 class Item:
@@ -17,11 +22,14 @@ class Item:
         self.position = []
         self.free_box = free_box
         self.item_location()
-        self.inventory = []
+        self.item_inventory()
 
     def item_location(self):
         """Method for placing an object randomly"""
         self.position.append(random.choice(self.free_box))
+
+
+        print(self.free_box)
 
     def item_display(self, window):
         """Method for display picture in my labyrinth"""
@@ -30,9 +38,13 @@ class Item:
         loot = pygame.transform.scale(loot, (30, 30))
         window.blit(loot, self.position[0])
 
+    def item_undisplay(self, window):
+        unloot = pygame.image.load(constant.image_background).convert()
+        unloot = pygame.transform.scale(unloot, (30, 30))
+        window.blit(unloot, self.position[0])
 
-
-
+    def item_inventory(self, item):
+        self.item = []
 
 
 
