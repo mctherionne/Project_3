@@ -6,6 +6,7 @@ classes to create the game maze
 """
 
 import pygame
+from pygame.locals import *
 import constant
 
 

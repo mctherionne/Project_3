@@ -11,10 +11,11 @@ Files : games.py, mcgyver.py, labyrinth.py, item.py, constant.py, n1 + images
 
 import pygame
 from pygame.locals import *
+
 import constant
+import item
 import labyrinth
 import mcgyver
-import item
 
 pygame.init()
 # Opening the Pygame window (square: width = height)
@@ -60,6 +61,7 @@ while continuer:
     # to not load if he leaves
     if choice != 0:
         # load background
+        background_2 = pygame.draw.rect(window, (0, 0, 0), (0, 0, 800, 600))
         background = pygame.Surface(window.get_size())
         background = pygame.image.load(constant.image_background).convert()
         window.blit(background, (0, 0))
@@ -77,28 +79,44 @@ while continuer:
         # creation items
         name_item = ("needle", "small plastic tube", "ether")
         item.Item.name = name_item
+        image_loot = pygame.image.load(constant.image_loot).convert()
         for i in range(0, 3):
             level.item_lab.append(item.Item(name_item[i], level.free_box))
+            level.item_lab[i].item_display(window)
 
             print(level.item_lab[i].name, level.item_lab[i].position)
 
         # game loop
         continuer_game = 1
         while continuer_game:
-            # Background for write item, inventory
-            background_2 = pygame.draw.rect(window, (0, 0, 0), (0, 0, 800, 600))
-            inventory = "you got"
-            font = pygame.font.SysFont("broadway", 36, bold=False, italic=False)
-            text = font.render(inventory, 1, (255, 255, 255))
-            # when mcgyver go in case with a item
-            if mcg == level.item_lab:
-                font = pygame.font.SysFont("broadway", 36, bold=False, italic=False)
-                text = font.render(name_item, 1, (255, 255, 255))
-                window.blit(text, (450, 60))
-            window.blit(text, (450, 0))
-            labyrinth.pygame.time.Clock().tick(30)
 
-            for event in labyrinth.pygame.event.get():
+            # Background for write item, inventory
+            font = pygame.font.SysFont("broadway", 36)
+            text = font.render("you got : ", 1, (255, 255, 255))
+            window.blit(text, (450, 0))
+
+            # when mcgyver go in case with a item
+            if mcg.case == level.item_lab[0].position:
+                window.blit(background, (mcg.x, mcg.y))
+                text_1 = font.render(level.item_lab[0].name, 1, (255, 255, 255))
+                window.blit(text_1, (450, 40))
+                pygame.display.flip()
+                item.Item.inventory(level.item_lab.name)
+            elif mcg.case == level.item_lab[1].position:
+                window.blit(background, (mcg.x, mcg.y))
+                text_2 = font.render(level.item_lab[1].name, 1, (255, 255, 255))
+                window.blit(text_2, (450, 90))
+                pygame.display.flip()
+            elif mcg.case == level.item_lab[2].position:
+                window.blit(background, (mcg.case_x, mcg.case_y))
+                text_3 = font.render(level.item_lab[2].name, 1, (255, 255, 255))
+                window.blit(text_3, (450, 150))
+                pygame.display.flip()
+
+
+            pygame.time.Clock().tick(30)
+
+            for event in pygame.event.get():
 
                 if event.type == QUIT:
                     continuer_game = 0
@@ -120,11 +138,17 @@ while continuer:
                         mcg.move('down')
 
             # Display on the news positions
-            window.blit(background, (0, 0))
-            level.display(window)
+            window.blit(background, (mcg.old_case_x, mcg.old_case_y))
             window.blit(mcg.direction, (mcg.x, mcg.y))
-            labyrinth.pygame.display.flip()
+            pygame.display.flip()
 
-            # Victory -> back to the home
+            # when Mcgyver finished level
+            # if mcgyver had all item
             if level.structure[mcg.case_y][mcg.case_x] == 'a':
-                continuer_game = 0
+                continuer = 1
+                background_3 = pygame.draw.rect(window, (255, 255, 255), (0, 0, 800, 600))
+                finished_game = "congratulation you have down the guard"
+                font = pygame.font.SysFont("broadway", 58, bold=False, italic=False)
+                text_4 = font.render(finished_game, 1, (0, 0, 0))
+                window.blit(text_4, (5, 300))
+            # if Mcgyver had no item

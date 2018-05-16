@@ -7,8 +7,6 @@ files for class to create items
 import random
 import pygame
 import constant
-import labyrinth as lab
-import mcgyver as mcg
 
 
 class Item:
@@ -19,6 +17,7 @@ class Item:
         self.position = []
         self.free_box = free_box
         self.item_location()
+        self.inventory = []
 
     def item_location(self):
         """Method for placing an object randomly"""
@@ -27,12 +26,13 @@ class Item:
     def item_display(self, window):
         """Method for display picture in my labyrinth"""
         # Loading image
-        loot = pygame.transform.scale(constant.image_loot, (30, 30))
+        loot = pygame.image.load(constant.image_loot).convert()
+        loot = pygame.transform.scale(loot, (30, 30))
+        window.blit(loot, self.position[0])
 
-        for line in lab.Labyrinth.self.structure:
-            for sprite in line:
-                x = lab.Labyrinth.item_lab * constant.size_sprite
-                y = lab.Labyrinth.item_lab * constant.size_sprite
-                if sprite == self.position:
-                    window.blit(loot, (x, y))
-            pygame.display.flip()
+
+
+
+
+
+

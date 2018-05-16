@@ -5,9 +5,8 @@
 class to create Macgyver (character of the game)
 """
 
-from pygame import sprite
-import labyrinth
 import constant
+import labyrinth
 
 
 class Mcgyver:
@@ -24,9 +23,18 @@ class Mcgyver:
         self.y = 0
         # Level in which the character is located
         self.level = level
+        self.old_case_x = 0
+        self.old_case_y = 0
+        self.case = []
+
 
     def move(self, direction):
         """Method for moving the character"""
+        self.case = [self.x, self.y]
+        self.old_case_x = self.x
+        self.old_case_y = self.y
+
+        print(self.case)
 
         # Move to right
         if direction == 'right':
@@ -38,6 +46,7 @@ class Mcgyver:
                     self.case_x += 1
                     # Calculation of the actual pixel positions
                     self.x = self.case_x * constant.size_sprite
+
         # Move to left
         if direction == 'left':
             if self.case_x > 0:
@@ -56,6 +65,4 @@ class Mcgyver:
                 if self.level.structure[self.case_y + 1][self.case_x] != 'm':
                     self.case_y += 1
                     self.y = self.case_y * constant.size_sprite
-        # When macgyver finishes the level
-        if sprite != 'a':
-            pass
+
