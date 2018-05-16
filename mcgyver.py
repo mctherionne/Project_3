@@ -19,18 +19,19 @@ class Mcgyver:
         # Character position in boxes and pixel
         self.case_x = 0
         self.case_y = 0
+        self.case = ()
         self.x = 0
         self.y = 0
         # Level in which the character is located
         self.level = level
         self.old_case_x = 0
         self.old_case_y = 0
-        self.case = []
+
 
 
     def move(self, direction):
         """Method for moving the character"""
-        self.case = [self.x, self.y]
+        self.case = (self.x, self.y)
         self.old_case_x = self.x
         self.old_case_y = self.y
 
@@ -66,4 +67,7 @@ class Mcgyver:
                     self.case_y += 1
                     self.y = self.case_y * constant.size_sprite
 
-    def add_item(self):
+    def add_item(self, name_item):
+        self.inventory.append(name_item)
+
+        print(self.inventory)
