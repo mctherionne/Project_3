@@ -4,7 +4,7 @@
 """
 class to create Macgyver (character of the game)
 """
-
+import pygame
 import constant
 import labyrinth
 
@@ -14,8 +14,8 @@ class Mcgyver:
 
     def __init__(self, level):
         # Sprite of the character
-        self.direction = labyrinth.pygame.image.load(constant.image_macgyver).convert_alpha()
-        self.direction = labyrinth.pygame.transform.scale(self.direction, (30, 30))
+        self.direction = pygame.image.load(constant.image_macgyver).convert_alpha()
+        self.direction = pygame.transform.scale(self.direction, (30, 30))
         # Character position in boxes and pixel
         self.case_x = 0
         self.case_y = 0
@@ -26,16 +26,20 @@ class Mcgyver:
         self.level = level
         self.old_case_x = 0
         self.old_case_y = 0
-
-
+        # Tuple for inventory
+        self.inventory = []
+        self.nb_item = 0
+        self.actually_x = 0
+        self.actually_y = 0
 
     def move(self, direction):
         """Method for moving the character"""
         self.case = (self.x, self.y)
         self.old_case_x = self.x
         self.old_case_y = self.y
+        print(self.x, self.y)
 
-        print(self.case)
+
 
         # Move to right
         if direction == 'right':
@@ -61,6 +65,7 @@ class Mcgyver:
                     self.case_y -= 1
                     self.y = self.case_y * constant.size_sprite
         # Move to down
+
         if direction == 'down':
             if self.case_y < (constant.number_sprite_side - 1):
                 if self.level.structure[self.case_y + 1][self.case_x] != 'm':
@@ -68,6 +73,10 @@ class Mcgyver:
                     self.y = self.case_y * constant.size_sprite
 
     def add_item(self, name_item):
+        """appends item on the list, for create a inventory"""
+
         self.inventory.append(name_item)
+        self.nb_item = len(self.inventory)
 
         print(self.inventory)
+        print(self.nb_item)

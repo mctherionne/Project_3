@@ -77,7 +77,6 @@ while continuer:
         level.display(window)
 
         # creation items
-
         name_item = ("needle", "small plastic tube", "ether")
         item.Item.name = name_item
         image_loot = pygame.image.load(constant.image_loot).convert()
@@ -95,27 +94,6 @@ while continuer:
             font = pygame.font.SysFont("broadway", 36)
             text = font.render("you got : ", 1, (255, 255, 255))
             window.blit(text, (450, 0))
-
-            # when mcgyver go in case with a item
-            if mcg.case == level.item_lab[0].position:
-                mcg.add_item(level.item_lab[0].name)
-                window.blit(background, (mcg.x, mcg.y))
-                text_1 = font.render(level.item_lab[0].name, 1, (255, 255, 255))
-                window.blit(text_1, (450, 40))
-                pygame.display.flip()
-            if mcg.case == level.item_lab[1].position:
-                mcg.add_item(level.item_lab[1].name)
-                window.blit(background, (mcg.x, mcg.y))
-                text_2 = font.render(level.item_lab[1].name, 1, (255, 255, 255))
-                window.blit(text_2, (450, 90))
-                pygame.display.flip()
-            if mcg.case == level.item_lab[2].position:
-                mcg.add_item(level.item_lab[2].name)
-                window.blit(background, (mcg.x, mcg.y))
-                text_3 = font.render(level.item_lab[2].name, 1, (255, 255, 255))
-                window.blit(text_3, (450, 150))
-                pygame.display.flip()
-
 
             pygame.time.Clock().tick(30)
 
@@ -145,13 +123,40 @@ while continuer:
             window.blit(mcg.direction, (mcg.x, mcg.y))
             pygame.display.flip()
 
+            # when mcgyver go in case with a item
+            # If mcg go in item 1
+            for j in range(0, 3):
+                if mcg.case == level.item_lab[j].position and level.item_lab[j].dropped_item == False:
+                    mcg.add_item(level.item_lab[j].name)
+                    level.item_lab[j].dropped_item = True
+                    window.blit(background, (mcg.x, mcg.y))
+                    if j == 0:
+                        text_1 = font.render(level.item_lab[0].name, 1, (255, 255, 255))
+                        window.blit(text_1, (450, 40))
+                    elif j == 1:
+                        text_2 = font.render(level.item_lab[1].name, 1, (255, 255, 255))
+                        window.blit(text_2, (450, 90))
+                    elif j == 2:
+                        text_3 = font.render(level.item_lab[2].name, 1, (255, 255, 255))
+                        window.blit(text_3, (450, 150))
+
+                    pygame.display.flip()
+
             # when Mcgyver finished level
             # if mcgyver had all item
-            if level.structure[mcg.case_y][mcg.case_x] == 'a':
+            if level.structure[mcg.case_y][mcg.case_x] == 'a' and len(mcg.inventory) == 3:
                 continuer = 1
                 background_3 = pygame.draw.rect(window, (255, 255, 255), (0, 0, 800, 600))
                 finished_game = "congratulation you have down the guard"
                 font = pygame.font.SysFont("broadway", 58, bold=False, italic=False)
                 text_4 = font.render(finished_game, 1, (0, 0, 0))
                 window.blit(text_4, (5, 300))
+
             # if Mcgyver had no item
+            if level.structure[mcg.case_y][mcg.case_x] == 'a' and len(mcg.inventory) < 3:
+                continuer = 1
+                background_4 = pygame.draw.rect(window, (255, 255, 255), (0, 0, 800, 600))
+                game_over = "you have failed, try again"
+                font = pygame.font.SysFont('broadway', 58, bold=False, italic=False)
+                text_5 = font.render(game_over, 1, (0, 0, 0))
+                window.blit(text_5, (5, 300))
