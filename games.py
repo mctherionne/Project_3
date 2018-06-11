@@ -145,6 +145,7 @@ while continuer:
             # when Mcgyver finished level
             # if mcgyver had all item
             if level.structure[mcg.case_y][mcg.case_x] == 'a' and len(mcg.inventory) == 3:
+
                 continuer = 1
                 background_3 = pygame.draw.rect(window, (255, 255, 255), (0, 0, 800, 600))
                 finished_game = "congratulation you have down the guard"
